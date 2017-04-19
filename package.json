@@ -1,0 +1,29 @@
+{
+  "name": "nosql-esgi",
+  "version": "1.0.0",
+  "description": "Projet de cinquième année, vous aurez 5h, par équipe de 4 à 5, pour améliorer l'API REST conçue pendant votre semaine thématique.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "mongoose": "^4.8.7",
+    "mongoose-timestamp": "^0.6.0",
+    "mongoose-ttl": "0.0.3",
+    "node-mongoose-fixtures": "^0.2.4"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lebe1ge/noSql-ESGI.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Lebe1ge/noSql-ESGI/issues"
+  },
+  "homepage": "https://github.com/Lebe1ge/noSql-ESGI#readme"
+}

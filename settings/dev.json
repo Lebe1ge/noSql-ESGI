@@ -1,0 +1,40 @@
+{
+  "port": 1337,
+  "security" : {
+    "salt": "iloveodop"
+  },
+  "db": {
+    "mongo": {
+      "url": "mongodb://localhost:27017/grello"
+    }
+  },
+  "acl": {
+    "roles": [
+      {
+        "Owner": {
+          "name": "Owner",
+          "level": 1
+        },
+        "Admin": {
+          "name": "Admin",
+          "level": 2
+        },
+        "Member": {
+          "name": "Member",
+          "level": 3
+        }
+      }],
+    "actions": {
+      "project.assign": 2,
+      "project.remove": 2,
+      "project.update": 2,
+      "role.update": 1,
+      "task.create": 3,
+      "task.list": 3,
+      "task.update": 2,
+      "task.assign": 2,
+      "team.adduser": 1,
+      "team.removeuser": 2
+    }
+  }
+}
