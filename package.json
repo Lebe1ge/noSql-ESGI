@@ -14,7 +14,7 @@
     "chart.js": "^2.5.0",
     "express": "^4.15.2",
     "jsonwebtoken": "^7.3.0",
-    "mongoose": "^4.8.7",
+    "mongoose": "^4.9.5",
     "mongoose-timestamp": "^0.6.0",
     "mongoose-timestamps": "0.0.1",
     "mongoose-ttl": "0.0.3",

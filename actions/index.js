@@ -1,6 +1,5 @@
-module.exports = (server) => {
-    server.actions = {
-        users: require('./users')(server),
-        tweets: require('./tweets')(server)
+module.exports = (app) => {
+    app.actions = {
+        tweets: require('./tweets')(app)
     }
 };

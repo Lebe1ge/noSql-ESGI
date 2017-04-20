@@ -5,15 +5,15 @@
   },
   "db": {
     "mongo": {
-      "url": "mongodb://localhost:27017/grello"
+      "url": "mongodb://localhost:27017/twitter"
     }
   },
   "api": {
     "twitter" : {
-      "consumer_key" : "kQgVV8Gd7k5tTAaU0nn27kYcH",
-      "consumer_secret" : "Rgtzpoyg7cQjIX4KBsgKq5NkHWAChSU4fKOy2K2msf5wzJx7wA",
-      "access_token" : "439280668-ZSk68R4FWAn4W5xVIeDNF9F7CFnWPtPa5Izf7tf6",
-      "access_token_secret" : "bl9O5NLyU8ZtW2niFscie0DQxa7ggjBdlCjoT3lZKVLEr"
+      "consumer_key" : "NxXZTtTKpa1pZYDCPqg3ZaIZb",
+      "consumer_secret" : "LBOhHXfCHkuaYzOtquevtdMv0gyoINfZFGQl36CpVukhlWmFPU",
+      "access_token" : "4514173763-RIel6iXsHQRpqRNlxiawcX5qfVfff0EwHyzIS60",
+      "access_token_secret" : "nC0UgMqcSDmHVWI1evIYUjzZmF2BDidvqZrJ4rESBcJ23"
     }
   }
 }

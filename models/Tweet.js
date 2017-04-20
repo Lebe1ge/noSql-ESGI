@@ -1,24 +1,17 @@
 const timestamps = require('mongoose-timestamps');
 
-module.exports = (server) => {
-    const Schema = server.mongoose.Schema;
+module.exports = (app) => {
+    const Schema = app.mongoose.Schema;
 
     const TweetSchema = new Schema({
-        title: String,
-        dueDate: Date,
-
-        creator: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        },
-
-        assigned: {
-            type: Schema.Types.ObjectId,
-            ref: 'User'
-        }
+        id: String,
+        text: String,
+        entities: Object,
+        user: Object,
+        created_at: Date
     });
 
     TweetSchema.plugin(timestamps);
 
-    return server.mongoose.model('Tweet', TweetSchema);
+    return app.mongoose.model('Tweet', TweetSchema);
 };

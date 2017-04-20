@@ -1,84 +1,64 @@
-module.exports = (server) => {
-    const Tweet = server.models.Tweet;
-    const User = server.models.User;
+const Twitter = require('twit');
+const mongoose = require('mongoose');
+
+module.exports = (app) => {
+    const Tweet = app.models.Tweet;
 
     return {
-        create,
-        list,
-        show,
-        update,
-        remove,
-        assign: require('./assign')(server)
+        create
     };
 
     function create(req, res, next) {
-        let user = null;
+        let twitter = new Twitter(app.settings.api.twitter);
+        let search = req.params.search;
+        let lastId = 0;
+        let i = 0;
+        let requete = 0;
+        return getTweets();
 
-        return User.findById(req.userId)
-            .then(server.utils.ensureOne)
-            .catch(server.utils.reject(403, 'invalid.user'))
-            .then(createTweet)
-            .then(setCreatorAndAssign)
-            .then(persist)
-            .then(res.commit)
-            .catch(res.error);
-
-        function createTweet(data) {
-            user = data;
-            return new Tweet(req.body);
+        function getTweets(){
+            getByHashtag()
+                .then(createTweet)
+                .then(ifExit);
         }
 
-        function setCreatorAndAssign(todo) {
-            todo.creator = req.userId;
-            todo.assigned = req.userId;
-            return todo;
-        }
-
-        function persist(todo) {
-            return todo.save()
-                .then(addToUser)
-                .then(returnTweet);
-
-            function addToUser(todo) {
-                user.tasks.push(todo._id);
-                user.save()
+        function ifExit() {
+            if(i < 100){
+                i++;
+                return getTweets();
+            }else{
+                res.send('Okay');
             }
 
-            function returnTweet() {
-                return todo;
-            }
         }
-    }
 
-    function list(req, res, next) {
-        Tweet.find()
-            .then(res.commit)
-            .catch(res.error);
-    }
+        function getByHashtag(){
+            let params = { q: '#'+ search, max_id: lastId, count: 100 };
+            requete++;
+            return twitter.get('search/tweets', params, (err, data, response) => {return data;});
+        }
 
-    function show(req, res, next) {
-        Tweet.findById(req.params.id)
-            .then(server.utils.ensureOne)
-            .catch(server.utils.reject(404, 'todo.not.found'))
-            .then(res.commit)
-            .catch(res.error);
-    }
+        function createTweet(data){
+            save = 0;
+            if(lastId == 0) {
+                lastId = data.data.statuses[0].id - 1;
+            }
+            for(index in data.data.statuses) {
+                if(data.data.statuses[index].id < lastId){
+                    lastId = data.data.statuses[index].id - 1;
+                }
+                let twitt = new Tweet(data.data.statuses[index]);
 
-    function update(req, res, next) {
-        Tweet.findByIdAndUpdate(req.body.id, req.body)
-            .then(server.utils.ensureOne)
-            .catch(server.utils.reject(404, 'todo.not.found'))
-            .then(server.utils.empty)
-            .then(res.commit)
-            .catch(res.error);
-    }
-
-    function remove(req, res, next) {
-        Tweet.findByIdAndRemove(req.params.id)
-            .then(server.utils.ensureOne)
-            .catch(server.utils.reject(404, 'todo.not.found'))
-            .then(server.utils.empty)
-            .then(res.commit)
-            .catch(res.error);
+                Tweet.find({id: data.data.statuses[index].id}, function(err, docs){
+                    if(!docs.length){
+                        save++;
+                        twitt.save();
+                    }
+                    next();
+                });
+            }
+            console.log("Requete : "+ requete + ", enregistrement : "+save);
+            return data;
+        }
     }
 };
