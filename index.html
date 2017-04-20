@@ -18,6 +18,16 @@
 			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
 			document.getElementsByTagName( 'head' )[0].appendChild( link );
 		</script>
+		<style>
+			.reveal {
+				color : white !important;
+				margin:0;
+				padding:0;
+				background: url(./css/background.png) no-repeat center fixed;
+				-webkit-background-size: cover; /* pour anciens Chrome et Safari */
+				background-size: cover; /* version standardisée */
+			}
+		</style>
 	</head>
 	<body>
 		<div class="reveal">
@@ -44,16 +54,18 @@
 					<section>
 						<canvas id="popularity" width="400" height="400"></canvas>
 						<script>
-							var popularity = document.getElementById("popularity");
+							var popularity = document.getElementById("popularity").getContext("2d");
+							popularity.canvas.width = 1000;
+							popularity.canvas.height = 600;
 							var data_popularity = {
 								labels: ["January", "February", "March", "April", "May", "June", "July"],
 								datasets: [
 									{
-										label: "My First dataset",
-										fill: false,
+										label: "Nombre de tweets",
+										fill: true,
 										lineTension: 0.1,
-										backgroundColor: "rgba(75,192,192,0.4)",
-										borderColor: "rgba(75,192,192,1)",
+										backgroundColor: "rgba(215, 40, 40, 0.2)",
+										borderColor: "rgba(215, 40, 40, 0.9)",
 										borderCapStyle: 'butt',
 										borderDash: [],
 										borderDashOffset: 0.0,
@@ -68,14 +80,32 @@
 										pointRadius: 1,
 										pointHitRadius: 10,
 										data: [65, 59, 80, 81, 56, 55, 40],
-										spanGaps: false,
+										fontColor: "rgba(255, 255, 255, 1)",
+										spanGaps: false
 									}
 								]
 							};
 							var myPopularityLineChart = new Chart(popularity, {
 								type: 'line',
-								data: data_popularity
-								//options: options
+								data: data_popularity,
+								options: {
+									scaleFontColor: "#FFFFFF",
+									scales: {
+										yAxes: [{
+											ticks: {
+												fontColor: "white",
+												fontSize: 14,
+											}
+										}],
+										xAxes: [{
+											ticks: {
+												fontColor: "white",
+												fontSize: 14,
+												stepSize: 1,
+											}
+										}]
+									}
+								}
 							});
 						</script>
 					</section>
