@@ -1,7 +1,7 @@
 {
   "name": "nosql-esgi",
   "version": "1.0.0",
-  "description": "Projet de cinquième année, vous aurez 5h, par équipe de 4 à 5, pour améliorer l'API REST conçue pendant votre semaine thématique.",
+  "description": "Projet NoSQL - Big Data.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,6 +11,7 @@
   "dependencies": {
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.1",
+    "bootstrap": "^3.3.7",
     "chart.js": "^2.5.0",
     "express": "^4.15.2",
     "jsonwebtoken": "^7.3.0",
@@ -18,11 +19,27 @@
     "mongoose-timestamp": "^0.6.0",
     "mongoose-timestamps": "0.0.1",
     "mongoose-ttl": "0.0.3",
+    "grunt-cli": "~1.2.0",
+    "mustache": "~2.2.1",
+    "socket.io": "^1.4.8"
     "node-mongoose-fixtures": "^0.2.4",
     "sha1": "^1.1.1",
     "twit": "^2.2.5"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "grunt": "~1.0.1",
+    "grunt-autoprefixer": "~3.0.3",
+    "grunt-contrib-connect": "~0.11.2",
+    "grunt-contrib-cssmin": "~0.14.0",
+    "grunt-contrib-jshint": "~0.11.3",
+    "grunt-contrib-qunit": "~1.2.0",
+    "grunt-contrib-uglify": "~0.9.2",
+    "grunt-contrib-watch": "~1.0.0",
+    "grunt-sass": "~1.2.0",
+    "grunt-retire": "~0.3.10",
+    "grunt-zip": "~0.17.1",
+    "node-sass": "~3.13.0"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Lebe1ge/noSql-ESGI.git"
