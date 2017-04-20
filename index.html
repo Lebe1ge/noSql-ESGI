@@ -10,7 +10,7 @@
 		<link rel="stylesheet" href="css/theme/black.css">
 		<link rel="stylesheet" href="lib/css/zenburn.css">
 
-		<script src="./node_modules/chart.js/src/chart.js"></script>
+		<script src="./node_modules/chart.js/dist/Chart.bundle.js"></script>
 		<script>
 			var link = document.createElement( 'link' );
 			link.rel = 'stylesheet';
@@ -86,10 +86,36 @@
 						<canvas id="age" width="400" height="400"></canvas>
 						<script>
 							var age = document.getElementById("age");
+							var data_age = {
+								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								datasets: [
+									{
+										label: "My First dataset",
+										backgroundColor: [
+											'rgba(255, 99, 132, 0.2)',
+											'rgba(54, 162, 235, 0.2)',
+											'rgba(255, 206, 86, 0.2)',
+											'rgba(75, 192, 192, 0.2)',
+											'rgba(153, 102, 255, 0.2)',
+											'rgba(255, 159, 64, 0.2)'
+										],
+										borderColor: [
+											'rgba(255,99,132,1)',
+											'rgba(54, 162, 235, 1)',
+											'rgba(255, 206, 86, 1)',
+											'rgba(75, 192, 192, 1)',
+											'rgba(153, 102, 255, 1)',
+											'rgba(255, 159, 64, 1)'
+										],
+										borderWidth: 1,
+										data: [65, 59, 80, 81, 56, 55, 40],
+									}
+								]
+							};
 							var ageBarChart = new Chart(age, {
 								type: 'bar',
-								data: data_age,
-								options: options
+								data: data_age
+								//options: options
 							});
 						</script>
 					</section>
@@ -100,10 +126,36 @@
 						<canvas id="waiting" width="400" height="400"></canvas>
 						<script>
 							var waiting = document.getElementById("waiting");
+							var data_waiting = {
+								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								datasets: [
+									{
+										label: "My First dataset",
+										backgroundColor: [
+											'rgba(255, 99, 132, 0.2)',
+											'rgba(54, 162, 235, 0.2)',
+											'rgba(255, 206, 86, 0.2)',
+											'rgba(75, 192, 192, 0.2)',
+											'rgba(153, 102, 255, 0.2)',
+											'rgba(255, 159, 64, 0.2)'
+										],
+										borderColor: [
+											'rgba(255,99,132,1)',
+											'rgba(54, 162, 235, 1)',
+											'rgba(255, 206, 86, 1)',
+											'rgba(75, 192, 192, 1)',
+											'rgba(153, 102, 255, 1)',
+											'rgba(255, 159, 64, 1)'
+										],
+										borderWidth: 1,
+										data: [65, 59, 80, 81, 56, 55, 40],
+									}
+								]
+							};
 							var waitingBarChart = new Chart(waiting, {
 								type: 'bar',
-								data: data_waiting,
-								options: options
+								data: data_waiting
+								//options: options
 							});
 						</script>
 					</section>
@@ -114,10 +166,36 @@
 						<canvas id="hashtags" width="400" height="400"></canvas>
 						<script>
 							var hashtags = document.getElementById("hashtags");
+							var data_hashtags = {
+								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								datasets: [
+									{
+										label: "My First dataset",
+										backgroundColor: [
+											'rgba(255, 99, 132, 0.2)',
+											'rgba(54, 162, 235, 0.2)',
+											'rgba(255, 206, 86, 0.2)',
+											'rgba(75, 192, 192, 0.2)',
+											'rgba(153, 102, 255, 0.2)',
+											'rgba(255, 159, 64, 0.2)'
+										],
+										borderColor: [
+											'rgba(255,99,132,1)',
+											'rgba(54, 162, 235, 1)',
+											'rgba(255, 206, 86, 1)',
+											'rgba(75, 192, 192, 1)',
+											'rgba(153, 102, 255, 1)',
+											'rgba(255, 159, 64, 1)'
+										],
+										borderWidth: 1,
+										data: [65, 59, 80, 81, 56, 55, 40],
+									}
+								]
+							};
 							var hashtagsBarChart = new Chart(hashtags, {
 								type: 'bar',
-								data: data_hashtags,
-								options: options
+								data: data_hashtags
+								//options: options
 							});
 						</script>
 					</section>
@@ -128,10 +206,36 @@
 						<canvas id="favorites" width="400" height="400"></canvas>
 						<script>
 							var favorites = document.getElementById("favorites");
+							var data_favorites = {
+								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								datasets: [
+									{
+										label: "My First dataset",
+										backgroundColor: [
+											'rgba(255, 99, 132, 0.2)',
+											'rgba(54, 162, 235, 0.2)',
+											'rgba(255, 206, 86, 0.2)',
+											'rgba(75, 192, 192, 0.2)',
+											'rgba(153, 102, 255, 0.2)',
+											'rgba(255, 159, 64, 0.2)'
+										],
+										borderColor: [
+											'rgba(255,99,132,1)',
+											'rgba(54, 162, 235, 1)',
+											'rgba(255, 206, 86, 1)',
+											'rgba(75, 192, 192, 1)',
+											'rgba(153, 102, 255, 1)',
+											'rgba(255, 159, 64, 1)'
+										],
+										borderWidth: 1,
+										data: [65, 59, 80, 81, 56, 55, 40],
+									}
+								]
+							};
 							var favoritesBarChart = new Chart(favorites, {
 								type: 'bar',
-								data: data_favorites,
-								options: options
+								data: data_favorites
+								//options: options
 							});
 						</script>
 					</section>
@@ -142,10 +246,36 @@
 						<canvas id="accounts" width="400" height="400"></canvas>
 						<script>
 							var accounts = document.getElementById("accounts");
+							var data_accounts = {
+								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								datasets: [
+									{
+										label: "My First dataset",
+										backgroundColor: [
+											'rgba(255, 99, 132, 0.2)',
+											'rgba(54, 162, 235, 0.2)',
+											'rgba(255, 206, 86, 0.2)',
+											'rgba(75, 192, 192, 0.2)',
+											'rgba(153, 102, 255, 0.2)',
+											'rgba(255, 159, 64, 0.2)'
+										],
+										borderColor: [
+											'rgba(255,99,132,1)',
+											'rgba(54, 162, 235, 1)',
+											'rgba(255, 206, 86, 1)',
+											'rgba(75, 192, 192, 1)',
+											'rgba(153, 102, 255, 1)',
+											'rgba(255, 159, 64, 1)'
+										],
+										borderWidth: 1,
+										data: [65, 59, 80, 81, 56, 55, 40],
+									}
+								]
+							};
 							var accountsBarChart = new Chart(accounts, {
 								type: 'bar',
-								data: data_accounts,
-								options: options
+								data: data_accounts
+								//options: options
 							});
 						</script>
 					</section>
