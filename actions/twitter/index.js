@@ -1,7 +1,9 @@
 const sha1 = require('sha1');
+const Twitter = require('twit');
 
 module.exports = (app) => {
   const User = app.models.User
+  const Twit = new Twitter(app.settings.api.twitter);
 
   return {
     create,

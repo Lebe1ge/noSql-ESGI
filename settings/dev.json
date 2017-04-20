@@ -39,7 +39,10 @@
   },
   "api": {
     "twitter" : {
-      "token_id" : "kQgVV8Gd7k5tTAaU0nn27kYcH"
+      "consumer_key" : "kQgVV8Gd7k5tTAaU0nn27kYcH",
+      "consumer_secret" : "Rgtzpoyg7cQjIX4KBsgKq5NkHWAChSU4fKOy2K2msf5wzJx7wA",
+      "access_token" : "439280668-ZSk68R4FWAn4W5xVIeDNF9F7CFnWPtPa5Izf7tf6",
+      "access_token_secret" : "bl9O5NLyU8ZtW2niFscie0DQxa7ggjBdlCjoT3lZKVLEr"
     }
   }
 }
