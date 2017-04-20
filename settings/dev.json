@@ -36,5 +36,10 @@
       "team.adduser": 1,
       "team.removeuser": 2
     }
+  },
+  "api": {
+    "twitter" : {
+      "token_id" : "kQgVV8Gd7k5tTAaU0nn27kYcH"
+    }
   }
 }
