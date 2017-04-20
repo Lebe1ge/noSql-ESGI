@@ -15,7 +15,8 @@
     "mongoose": "^4.8.7",
     "mongoose-timestamp": "^0.6.0",
     "mongoose-ttl": "0.0.3",
-    "node-mongoose-fixtures": "^0.2.4"
+    "node-mongoose-fixtures": "^0.2.4",
+    "twit": "^2.2.5"
   },
   "devDependencies": {},
   "repository": {

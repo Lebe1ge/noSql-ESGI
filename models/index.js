@@ -5,6 +5,7 @@ module.exports = (app) => {
   // app.mongoose = mongoose.connect(app.settings.db.mongo.url);
   // app.mongoose.Promise = bluebird;
   app.models = {
-    User: require('./User')(app)
+    User: require('./User')(app),
+    User: require('./Twitter')(app)
   }
 }
