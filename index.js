@@ -3,6 +3,7 @@ const app = express();
 const Router = require('express').Router;
 
 require('./settings')(app);
+require('./models')(app);
 require('./routes')(app);
 
 console.log(`server listening on port ${app.settings.port}`);

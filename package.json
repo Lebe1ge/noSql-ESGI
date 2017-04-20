@@ -16,6 +16,7 @@
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.8.7",
     "mongoose-timestamp": "^0.6.0",
+    "mongoose-timestamps": "0.0.1",
     "mongoose-ttl": "0.0.3",
     "node-mongoose-fixtures": "^0.2.4",
     "sha1": "^1.1.1",
