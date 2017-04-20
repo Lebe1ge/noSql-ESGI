@@ -7,5 +7,9 @@ module.exports = (app) => {
         app.actions.tweets.create
     );
 
+    router.get('/',
+        app.actions.tweets.show
+    );
+
     return router;
 };

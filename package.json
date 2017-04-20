@@ -13,17 +13,18 @@
     "body-parser": "^1.17.1",
     "bootstrap": "^3.3.7",
     "chart.js": "^2.5.0",
+    "ejs": "^2.5.6",
     "express": "^4.15.2",
+    "grunt-cli": "~1.2.0",
     "jsonwebtoken": "^7.3.0",
     "mongoose": "^4.9.5",
     "mongoose-timestamp": "^0.6.0",
     "mongoose-timestamps": "0.0.1",
     "mongoose-ttl": "0.0.3",
-    "grunt-cli": "~1.2.0",
     "mustache": "~2.2.1",
-    "socket.io": "^1.4.8"
     "node-mongoose-fixtures": "^0.2.4",
     "sha1": "^1.1.1",
+    "socket.io": "^1.4.8",
     "twit": "^2.2.5"
   },
   "devDependencies": {

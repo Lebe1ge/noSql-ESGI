@@ -1,11 +1,13 @@
 const Twitter = require('twit');
 const mongoose = require('mongoose');
+const path = require('path');
 
 module.exports = (app) => {
     const Tweet = app.models.Tweet;
 
     return {
-        create
+        create,
+        show
     };
 
     function create(req, res, next) {
@@ -60,5 +62,9 @@ module.exports = (app) => {
             console.log("Requete : "+ requete + ", enregistrement : "+save);
             return data;
         }
+    }
+
+    function show(req, res, next){
+      res.status(200).sendFile(path.join(__dirname+'/../../views/index.html'));
     }
 };
