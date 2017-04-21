@@ -12,7 +12,12 @@ module.exports = (app) => {
     };
 
     function create(req, res, next) {
-        let twitter = new Twitter(app.settings.api.twitter);
+        let twitter = new Twitter({
+          "consumer_key" : "NxXZTtTKpa1pZYDCPqg3ZaIZb",
+          "consumer_secret" : "LBOhHXfCHkuaYzOtquevtdMv0gyoINfZFGQl36CpVukhlWmFPU",
+          "access_token" : "4514173763-RIel6iXsHQRpqRNlxiawcX5qfVfff0EwHyzIS60",
+          "access_token_secret" : "nC0UgMqcSDmHVWI1evIYUjzZmF2BDidvqZrJ4rESBcJ23"
+        });
         let search = req.params.search;
         let lastId = 0;
         let i = 0;
@@ -67,7 +72,7 @@ module.exports = (app) => {
 
     function show(req, res, next){
       data = getGraph();
-      res.render('index', {graph: data});
+      res.render('index', {title: "data"});
     }
 
     function getGraph(){
