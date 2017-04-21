@@ -44,12 +44,6 @@
 					</ul>
 				</section>
 				<section>
-					<h2>Workflow</h2>
-					<ul>
-						<li>Faire un schéma</li>
-					</ul>
-				</section>
-				<section>
 					<section>Historique de popularité du hashtag</section>
 					<section>
 						<canvas id="popularity" width="400" height="400"></canvas>
@@ -133,7 +127,11 @@
 								datasets: [
 									{
 										label: "Tranche d'âge moyenne des comptes",
-										backgroundColor: 'rgba(215, 40, 40, 0.5)',
+										backgroundColor: [
+											"#F7464A",
+											"#949FB1",
+											"#4D5360"
+										],
 										borderColor: 'rgba(255, 255, 255, 1)',
 										borderWidth: 1,
 										data: [30, 45, 25]
@@ -142,13 +140,22 @@
 							};
 							var ageBarChart = new Chart(age, {
 								type: 'pie',
-								data: data_age
+								data: data_age,
+								options: {
+									legend: {
+										display: true,
+										labels: {
+											fontColor: 'rgb(255, 255, 255)',
+											fontSize: 16
+										}
+									}
+								}
 							});
 						</script>
 					</section>
 				</section>
 				<section>
-					<section>L'attente selon les pays</section>
+					<section>Le nombre de tweets selon la langue</section>
 					<section>
 						<canvas id="waiting" width="400" height="400"></canvas>
 						<script>
@@ -156,7 +163,7 @@
 							waiting.canvas.width = 1000;
 							waiting.canvas.height = 600;
 							var data_waiting = {
-								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								labels: ["EN", "IT", "DE", "IT", "ES", "June", "July"],
 								datasets: [
 									{
 										label: "L'attente selon les pays",
@@ -322,14 +329,14 @@
 							accounts.canvas.width = 1000;
 							accounts.canvas.height = 600;
 							var data_accounts = {
-								labels: ["January", "February", "March", "April"],
+								labels: ["@TwinPeaksArchve", "@SHO_TwinPeaks", "@ThatsOurWaldo", "@TwinPeaksDudes"],
 								datasets: [
 									{
 										label: "Les tweets favoris",
 										backgroundColor: 'rgba(215, 40, 40, 0.5)',
 										borderColor: 'rgba(255, 255, 255, 1)',
 										borderWidth: 1,
-										data: [65, 59, 80, 81, 56, 55, 40],
+										data: [33, 21.6, 41.2, 30.9],
 									}
 								]
 							};
