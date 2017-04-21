@@ -50,7 +50,7 @@
 					</ul>
 				</section>
 				<section>
-					<section>Historique de popularité  du tweet</section>
+					<section>Historique de popularité du hashtag</section>
 					<section>
 						<canvas id="popularity" width="400" height="400"></canvas>
 						<script>
@@ -58,7 +58,7 @@
 							popularity.canvas.width = 1000;
 							popularity.canvas.height = 600;
 							var data_popularity = {
-								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								labels: ["Janvier", "Février", "Mars", "Avril"],
 								datasets: [
 									{
 										label: "Nombre de tweets",
@@ -72,14 +72,14 @@
 										borderJoinStyle: 'miter',
 										pointBorderColor: "rgba(75,192,192,1)",
 										pointBackgroundColor: "#fff",
-										pointBorderWidth: 1,
+										pointBorderWidth: 2,
 										pointHoverRadius: 5,
 										pointHoverBackgroundColor: "rgba(75,192,192,1)",
 										pointHoverBorderColor: "rgba(220,220,220,1)",
 										pointHoverBorderWidth: 2,
-										pointRadius: 1,
+										pointRadius: 3,
 										pointHitRadius: 10,
-										data: [65, 59, 80, 81, 56, 55, 40],
+										data: [43, 57, 70, 35]	,
 										fontColor: "rgba(255, 255, 255, 1)",
 										spanGaps: false
 									}
@@ -94,14 +94,24 @@
 										yAxes: [{
 											ticks: {
 												fontColor: "white",
-												fontSize: 14,
+												fontSize: 16,
+											},
+											scaleLabel: {
+												display: true,
+												labelString: 'Nombre de tweets',
+												fontColor: "white",
 											}
 										}],
 										xAxes: [{
 											ticks: {
 												fontColor: "white",
-												fontSize: 14,
+												fontSize: 16,
 												stepSize: 1,
+											},
+											scaleLabel: {
+												display: true,
+												labelString: 'Année 2017',
+												fontColor: "white",
 											}
 										}]
 									}
@@ -111,41 +121,28 @@
 					</section>
 				</section>
 				<section>
-					<section>Tranche d'âge moyenne des comptes</section>
+					<section>Tranche d'âge des tweets</section>
 					<section>
 						<canvas id="age" width="400" height="400"></canvas>
 						<script>
-							var age = document.getElementById("age");
+							var age = document.getElementById("age").getContext("2d");
+							age.canvas.width = 1000;
+							age.canvas.height = 600;
 							var data_age = {
-								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								labels: ["18-25", "25-40", "40-60"],
 								datasets: [
 									{
-										label: "My First dataset",
-										backgroundColor: [
-											'rgba(255, 99, 132, 0.2)',
-											'rgba(54, 162, 235, 0.2)',
-											'rgba(255, 206, 86, 0.2)',
-											'rgba(75, 192, 192, 0.2)',
-											'rgba(153, 102, 255, 0.2)',
-											'rgba(255, 159, 64, 0.2)'
-										],
-										borderColor: [
-											'rgba(255,99,132,1)',
-											'rgba(54, 162, 235, 1)',
-											'rgba(255, 206, 86, 1)',
-											'rgba(75, 192, 192, 1)',
-											'rgba(153, 102, 255, 1)',
-											'rgba(255, 159, 64, 1)'
-										],
+										label: "Tranche d'âge moyenne des comptes",
+										backgroundColor: 'rgba(215, 40, 40, 0.5)',
+										borderColor: 'rgba(255, 255, 255, 1)',
 										borderWidth: 1,
-										data: [65, 59, 80, 81, 56, 55, 40],
+										data: [30, 45, 25]
 									}
 								]
 							};
 							var ageBarChart = new Chart(age, {
-								type: 'bar',
+								type: 'pie',
 								data: data_age
-								//options: options
 							});
 						</script>
 					</section>
@@ -155,37 +152,53 @@
 					<section>
 						<canvas id="waiting" width="400" height="400"></canvas>
 						<script>
-							var waiting = document.getElementById("waiting");
+							var waiting = document.getElementById("waiting").getContext("2d");
+							waiting.canvas.width = 1000;
+							waiting.canvas.height = 600;
 							var data_waiting = {
 								labels: ["January", "February", "March", "April", "May", "June", "July"],
 								datasets: [
 									{
-										label: "My First dataset",
-										backgroundColor: [
-											'rgba(255, 99, 132, 0.2)',
-											'rgba(54, 162, 235, 0.2)',
-											'rgba(255, 206, 86, 0.2)',
-											'rgba(75, 192, 192, 0.2)',
-											'rgba(153, 102, 255, 0.2)',
-											'rgba(255, 159, 64, 0.2)'
-										],
-										borderColor: [
-											'rgba(255,99,132,1)',
-											'rgba(54, 162, 235, 1)',
-											'rgba(255, 206, 86, 1)',
-											'rgba(75, 192, 192, 1)',
-											'rgba(153, 102, 255, 1)',
-											'rgba(255, 159, 64, 1)'
-										],
+										label: "L'attente selon les pays",
+										backgroundColor: 'rgba(215, 40, 40, 0.5)',
+										borderColor: 'rgba(255, 255, 255, 1)',
 										borderWidth: 1,
 										data: [65, 59, 80, 81, 56, 55, 40],
 									}
 								]
 							};
 							var waitingBarChart = new Chart(waiting, {
-								type: 'bar',
-								data: data_waiting
-								//options: options
+								type: 'horizontalBar',
+								data: data_waiting,
+								options: {
+									scaleFontColor: "#FFFFFF",
+									scales: {
+										yAxes: [{
+											ticks: {
+												fontColor: "white",
+												fontSize: 16,
+												stepSize: 1
+											},
+											scaleLabel: {
+												display: true,
+												labelString: 'Pays',
+												fontColor: "white",
+											}
+										}],
+										xAxes: [{
+											ticks: {
+												fontColor: "white",
+												fontSize: 16,
+
+											},
+											scaleLabel: {
+												display: true,
+												labelString: 'Nombre de tweets',
+												fontColor: "white"
+											}
+										}]
+									}
+								}
 							});
 						</script>
 					</section>
@@ -195,28 +208,16 @@
 					<section>
 						<canvas id="hashtags" width="400" height="400"></canvas>
 						<script>
-							var hashtags = document.getElementById("hashtags");
+							var hashtags = document.getElementById("hashtags").getContext("2d");
+							hashtags.canvas.width = 1000;
+							hashtags.canvas.height = 600;
 							var data_hashtags = {
-								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								labels: ["January", "February", "March", "April"],
 								datasets: [
 									{
-										label: "My First dataset",
-										backgroundColor: [
-											'rgba(255, 99, 132, 0.2)',
-											'rgba(54, 162, 235, 0.2)',
-											'rgba(255, 206, 86, 0.2)',
-											'rgba(75, 192, 192, 0.2)',
-											'rgba(153, 102, 255, 0.2)',
-											'rgba(255, 159, 64, 0.2)'
-										],
-										borderColor: [
-											'rgba(255,99,132,1)',
-											'rgba(54, 162, 235, 1)',
-											'rgba(255, 206, 86, 1)',
-											'rgba(75, 192, 192, 1)',
-											'rgba(153, 102, 255, 1)',
-											'rgba(255, 159, 64, 1)'
-										],
+										label: "Hashtag les plus utilisés",
+										backgroundColor: 'rgba(215, 40, 40, 0.5)',
+										borderColor: 'rgba(255, 255, 255, 1)',
 										borderWidth: 1,
 										data: [65, 59, 80, 81, 56, 55, 40],
 									}
@@ -224,48 +225,90 @@
 							};
 							var hashtagsBarChart = new Chart(hashtags, {
 								type: 'bar',
-								data: data_hashtags
-								//options: options
+								data: data_hashtags,
+								options: {
+									scaleFontColor: "#FFFFFF",
+									scales: {
+										yAxes: [{
+											ticks: {
+												fontColor: "white",
+												fontSize: 16
+											},
+											scaleLabel: {
+												display: true,
+												labelString: 'Nombre de tweets',
+												fontColor: "white",
+											}
+										}],
+										xAxes: [{
+											ticks: {
+												fontColor: "white",
+												fontSize: 16,
+												stepSize: 1
+											},
+											scaleLabel: {
+												display: true,
+												labelString: 'Hashtags',
+												fontColor: "white",
+											}
+										}]
+									}
+								}
 							});
 						</script>
 					</section>
 				</section>
 				<section>
-					<section>Tweets favoris</section>
+					<section>Les tweets favoris</section>
 					<section>
 						<canvas id="favorites" width="400" height="400"></canvas>
 						<script>
-							var favorites = document.getElementById("favorites");
+							var favorites = document.getElementById("favorites").getContext("2d");
+							favorites.canvas.width = 1000;
+							favorites.canvas.height = 600;
 							var data_favorites = {
-								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								labels: ["January", "February", "March", "April"],
 								datasets: [
 									{
-										label: "My First dataset",
-										backgroundColor: [
-											'rgba(255, 99, 132, 0.2)',
-											'rgba(54, 162, 235, 0.2)',
-											'rgba(255, 206, 86, 0.2)',
-											'rgba(75, 192, 192, 0.2)',
-											'rgba(153, 102, 255, 0.2)',
-											'rgba(255, 159, 64, 0.2)'
-										],
-										borderColor: [
-											'rgba(255,99,132,1)',
-											'rgba(54, 162, 235, 1)',
-											'rgba(255, 206, 86, 1)',
-											'rgba(75, 192, 192, 1)',
-											'rgba(153, 102, 255, 1)',
-											'rgba(255, 159, 64, 1)'
-										],
+										label: "Les tweets favoris",
+										backgroundColor: 'rgba(215, 40, 40, 0.5)',
+										borderColor: 'rgba(255, 255, 255, 1)',
 										borderWidth: 1,
 										data: [65, 59, 80, 81, 56, 55, 40],
 									}
 								]
 							};
 							var favoritesBarChart = new Chart(favorites, {
-								type: 'bar',
-								data: data_favorites
-								//options: options
+								type: 'horizontalBar',
+								data: data_favorites,
+								options: {
+									scaleFontColor: "#FFFFFF",
+									scales: {
+										xAxes: [{
+											ticks: {
+												fontColor: "white",
+												fontSize: 16
+											},
+											scaleLabel: {
+												display: true,
+												labelString: 'Nombre de favoris',
+												fontColor: "white",
+											}
+										}],
+										yAxes: [{
+											ticks: {
+												fontColor: "white",
+												fontSize: 16,
+												stepSize: 1
+											},
+											scaleLabel: {
+												display: true,
+												labelString: 'Tweet',
+												fontColor: "white",
+											}
+										}]
+									}
+								}
 							});
 						</script>
 					</section>
@@ -275,28 +318,16 @@
 					<section>
 						<canvas id="accounts" width="400" height="400"></canvas>
 						<script>
-							var accounts = document.getElementById("accounts");
+							var accounts = document.getElementById("accounts").getContext("2d");
+							accounts.canvas.width = 1000;
+							accounts.canvas.height = 600;
 							var data_accounts = {
-								labels: ["January", "February", "March", "April", "May", "June", "July"],
+								labels: ["January", "February", "March", "April"],
 								datasets: [
 									{
-										label: "My First dataset",
-										backgroundColor: [
-											'rgba(255, 99, 132, 0.2)',
-											'rgba(54, 162, 235, 0.2)',
-											'rgba(255, 206, 86, 0.2)',
-											'rgba(75, 192, 192, 0.2)',
-											'rgba(153, 102, 255, 0.2)',
-											'rgba(255, 159, 64, 0.2)'
-										],
-										borderColor: [
-											'rgba(255,99,132,1)',
-											'rgba(54, 162, 235, 1)',
-											'rgba(255, 206, 86, 1)',
-											'rgba(75, 192, 192, 1)',
-											'rgba(153, 102, 255, 1)',
-											'rgba(255, 159, 64, 1)'
-										],
+										label: "Les tweets favoris",
+										backgroundColor: 'rgba(215, 40, 40, 0.5)',
+										borderColor: 'rgba(255, 255, 255, 1)',
 										borderWidth: 1,
 										data: [65, 59, 80, 81, 56, 55, 40],
 									}
@@ -304,8 +335,35 @@
 							};
 							var accountsBarChart = new Chart(accounts, {
 								type: 'bar',
-								data: data_accounts
-								//options: options
+								data: data_accounts,
+								options: {
+									scaleFontColor: "#FFFFFF",
+									scales: {
+										yAxes: [{
+											ticks: {
+												fontColor: "white",
+												fontSize: 16
+											},
+											scaleLabel: {
+												display: true,
+												labelString: 'Nombre de favoris',
+												fontColor: "white",
+											}
+										}],
+										xAxes: [{
+											ticks: {
+												fontColor: "white",
+												fontSize: 16,
+												stepSize: 1
+											},
+											scaleLabel: {
+												display: true,
+												labelString: 'Tweet',
+												fontColor: "white",
+											}
+										}]
+									}
+								}
 							});
 						</script>
 					</section>
