@@ -66,7 +66,19 @@ module.exports = (app) => {
     }
 
     function show(req, res, next){
-      res.status(200).sendFile(path.join(__dirname+'/../../views/index.html'));
+      data = getGraph();
+      res.render('index', {graph: data});
+    }
+
+    function getGraph(){
+      let data = [];
+      // data.push(getGraph1);
+      // data.push(getGraph2);
+      // data.push(getGraph3);
+      // data.push(getGraph4);
+      // data.push(getGraph5);
+      // data.push(getGraph6);
+      return data;
     }
 
     function searchByCountry(req, res, next) {
