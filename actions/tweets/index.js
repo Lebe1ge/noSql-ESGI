@@ -12,55 +12,76 @@ module.exports = (app) => {
 
     function create(req, res, next) {
         let twitter = new Twitter(app.settings.api.twitter);
-        let search = req.params.search;
+        let search = 'twinpeaks';
         let lastId = 0;
-        let i = 0;
+        let saved = 0;
         let requete = 0;
+        let wait = false;
+        let startDate = new Date();
+        var d = new Date(); d.setMinutes(d.getMinutes() + 30);
+        let endDate;
+
         return getTweets();
 
         function getTweets(){
-            getByHashtag()
+            callApi()
                 .then(createTweet)
                 .then(ifExit);
         }
 
         function ifExit() {
-            if(i < 100){
-                i++;
-                return getTweets();
-            }else{
-                res.send('Okay');
-            }
-
-        }
-
-        function getByHashtag(){
-            let params = { q: '#'+ search, max_id: lastId, count: 100 };
-            requete++;
-            return twitter.get('search/tweets', params, (err, data, response) => {return data;});
-        }
-
-        function createTweet(data){
-            save = 0;
-            if(lastId == 0) {
-                lastId = data.data.statuses[0].id - 1;
-            }
-            for(index in data.data.statuses) {
-                if(data.data.statuses[index].id < lastId){
-                    lastId = data.data.statuses[index].id - 1;
+            if(wait){
+                console.log('Vous devez attendre ...');
+                for(let min = 0; min <= 15; min++) {
+                  setTimeout(function () {
+                    console.log((15-min) + 'minutes a attendres');
+                  },60000);
                 }
-                let twitt = new Tweet(data.data.statuses[index]);
+                wait = false;
+            }
+            return getTweets();
+        }
 
-                Tweet.find({id: data.data.statuses[index].id}, function(err, docs){
-                    if(!docs.length){
-                        save++;
+        function callApi(){
+            return twitter.get('search/tweets', { q: '#'+ search, max_id: lastId, count: 100 }, (err, data, response) => {
+              console.log(`Requête #${++requete} executed at ${new Date()}`);
+              return data;
+            });
+
+            // return twitter.get('search/tweets', params, (err, data, response) => {return data;});
+        }
+
+        function createTweet(tweets){
+
+          tweets = tweets.data.statuses;
+
+            if(tweets === null){
+              return null;
+            } else {
+              console.log(`Récupération de ${tweets.length} tweets`);
+            }
+
+            if(lastId === 0)
+                lastId = tweets[0].id - 1;
+
+            for(index in tweets) {
+
+                if(tweets[index].id < lastId){
+                    lastId = tweets[index].id - 1;
+                }
+
+                let twitt = new Tweet(tweets[index]);
+
+                Tweet.find({id: tweets[index].id}, function(err, tweet){
+                    if(!tweet.length){
+                        saved++;
                         twitt.save();
+                        console.log(`Tweet saved`);
                     }
                     next();
                 });
             }
-            console.log("Requete : "+ requete + ", enregistrement : "+save);
-            return data;
+            return tweets;
         }
     }
 
