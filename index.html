@@ -1,0 +1,399 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>#TwinPeaks</title>
+
+    <link rel="stylesheet" href="public/css/reveal.css">
+    <link rel="stylesheet" href="public/css/theme/black.css">
+    <link rel="stylesheet" href="public/lib/css/zenburn.css">
+
+    <script src="public/chartjs/chart.js/dist/Chart.bundle.js"></script>
+    <script>
+        var link = document.createElement( 'link' );
+        link.rel = 'stylesheet';
+        link.type = 'text/css';
+        link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+        document.getElementsByTagName( 'head' )[0].appendChild( link );
+    </script>
+    <style>
+        .reveal {
+            color : white !important;
+            margin:0;
+            padding:0;
+            background: url(public/css/background.png) no-repeat center fixed;
+            -webkit-background-size: cover; /* pour anciens Chrome et Safari */
+            background-size: cover; /* version standardisée */
+        }
+    </style>
+</head>
+<body>
+<div class="reveal">
+    <div class="slides">
+        <section>
+            <h2>Analyse du Hashtag TwinPeaks</h2>
+            <p>Julien Decoen - Antoine Delelis - Jeremy Felicité - Nicolas Souffleur</p>
+        </section>
+        <section>
+            <h2>Pourquoi ?</h2>
+            <ul>
+                <li>Nouvelle saison dans moins d’un mois, 26 ans après</li>
+                <li>Série culte d’une génération entière</li>
+            </ul>
+        </section>
+        <section>
+            <section>Historique de popularité du hashtag</section>
+            <section>
+                <canvas id="popularity" width="400" height="400"></canvas>
+                <script>
+                    var popularity = document.getElementById("popularity").getContext("2d");
+                    popularity.canvas.width = 1000;
+                    popularity.canvas.height = 600;
+                    var data_popularity = {
+                        labels: ["Janvier", "Février", "Mars", "Avril"],
+                        datasets: [
+                            {
+                                label: "Nombre de tweets",
+                                fill: true,
+                                lineTension: 0.1,
+                                backgroundColor: "rgba(215, 40, 40, 0.2)",
+                                borderColor: "rgba(215, 40, 40, 0.9)",
+                                borderCapStyle: 'butt',
+                                borderDash: [],
+                                borderDashOffset: 0.0,
+                                borderJoinStyle: 'miter',
+                                pointBorderColor: "rgba(75,192,192,1)",
+                                pointBackgroundColor: "#fff",
+                                pointBorderWidth: 2,
+                                pointHoverRadius: 5,
+                                pointHoverBackgroundColor: "rgba(75,192,192,1)",
+                                pointHoverBorderColor: "rgba(220,220,220,1)",
+                                pointHoverBorderWidth: 2,
+                                pointRadius: 3,
+                                pointHitRadius: 10,
+                                data: [43, 57, 70, 35]	,
+                                fontColor: "rgba(255, 255, 255, 1)",
+                                spanGaps: false
+                            }
+                        ]
+                    };
+                    var myPopularityLineChart = new Chart(popularity, {
+                        type: 'line',
+                        data: data_popularity,
+                        options: {
+                            scaleFontColor: "#FFFFFF",
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        fontColor: "white",
+                                        fontSize: 16,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Nombre de tweets',
+                                        fontColor: "white",
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontColor: "white",
+                                        fontSize: 16,
+                                        stepSize: 1,
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Année 2017',
+                                        fontColor: "white",
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </section>
+        </section>
+        <section>
+            <section>Tranche d'âge des tweets</section>
+            <section>
+                <canvas id="age" width="400" height="400"></canvas>
+                <script>
+                    var age = document.getElementById("age").getContext("2d");
+                    age.canvas.width = 1000;
+                    age.canvas.height = 600;
+                    var data_age = {
+                        labels: ["18-25", "25-40", "40-60"],
+                        datasets: [
+                            {
+                                label: "Tranche d'âge moyenne des comptes",
+                                backgroundColor: [
+                                    "#F7464A",
+                                    "#949FB1",
+                                    "#4D5360"
+                                ],
+                                borderColor: 'rgba(255, 255, 255, 1)',
+                                borderWidth: 1,
+                                data: [30, 45, 25]
+                            }
+                        ]
+                    };
+                    var ageBarChart = new Chart(age, {
+                        type: 'pie',
+                        data: data_age,
+                        options: {
+                            legend: {
+                                display: true,
+                                labels: {
+                                    fontColor: 'rgb(255, 255, 255)',
+                                    fontSize: 16
+                                }
+                            }
+                        }
+                    });
+                </script>
+            </section>
+        </section>
+        <section>
+            <section>Le nombre de tweets selon la langue</section>
+            <section>
+                <canvas id="waiting" width="400" height="400"></canvas>
+                <script>
+                    var waiting = document.getElementById("waiting").getContext("2d");
+                    waiting.canvas.width = 1000;
+                    waiting.canvas.height = 600;
+                    var data_waiting = {
+                        labels: ["EN", "FR", "IT", "ES", "RU", "PT", "JP"],
+                        datasets: [
+                            {
+                                label: "L'attente selon les pays",
+                                backgroundColor: 'rgba(215, 40, 40, 0.5)',
+                                borderColor: 'rgba(255, 255, 255, 1)',
+                                borderWidth: 1,
+                                data: [10610.0, 1038.0, 1026.0, 1696.0, 773.0, 499.0, 369.0],
+                            }
+                        ]
+                    };
+                    var waitingBarChart = new Chart(waiting, {
+                        type: 'horizontalBar',
+                        data: data_waiting,
+                        options: {
+                            scaleFontColor: "#FFFFFF",
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        fontColor: "white",
+                                        fontSize: 16,
+                                        stepSize: 1
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Pays',
+                                        fontColor: "white",
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontColor: "white",
+                                        fontSize: 16,
+
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Nombre de tweets',
+                                        fontColor: "white"
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </section>
+        </section>
+        <section>
+            <section>Hashtag les plus utilisés avec</section>
+            <section>
+                <canvas id="hashtags" width="400" height="400"></canvas>
+                <script>
+                    var hashtags = document.getElementById("hashtags").getContext("2d");
+                    hashtags.canvas.width = 1000;
+                    hashtags.canvas.height = 600;
+                    var data_hashtags = {
+                        labels: ["show", "TheReturn", "Cannes2017", "Showtime", "musica", "teatro", "DavidLynch"],
+                        datasets: [
+                            {
+                                label: "Hashtag les plus utilisés",
+                                backgroundColor: 'rgba(215, 40, 40, 0.5)',
+                                borderColor: 'rgba(255, 255, 255, 1)',
+                                borderWidth: 1,
+                                data: [3825, 1093, 750, 668, 475, 455, 330],
+                            }
+                        ]
+                    };
+                    var hashtagsBarChart = new Chart(hashtags, {
+                        type: 'bar',
+                        data: data_hashtags,
+                        options: {
+                            scaleFontColor: "#FFFFFF",
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        fontColor: "white",
+                                        fontSize: 16
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Nombre de tweets',
+                                        fontColor: "white",
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontColor: "white",
+                                        fontSize: 16,
+                                        stepSize: 1
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Hashtags',
+                                        fontColor: "white",
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </section>
+        </section>
+        <section>
+            <section>Les tweets favoris</section>
+            <section>
+                <canvas id="favorites" width="400" height="400"></canvas>
+                <script>
+                    var favorites = document.getElementById("favorites").getContext("2d");
+                    favorites.canvas.width = 1000;
+                    favorites.canvas.height = 600;
+                    var data_favorites = {
+                        labels: ["January", "February", "March", "April"],
+                        datasets: [
+                            {
+                                label: "Les tweets favoris",
+                                backgroundColor: 'rgba(215, 40, 40, 0.5)',
+                                borderColor: 'rgba(255, 255, 255, 1)',
+                                borderWidth: 1,
+                                data: [65, 59, 80, 81, 56, 55, 40],
+                            }
+                        ]
+                    };
+                    var favoritesBarChart = new Chart(favorites, {
+                        type: 'horizontalBar',
+                        data: data_favorites,
+                        options: {
+                            scaleFontColor: "#FFFFFF",
+                            scales: {
+                                xAxes: [{
+                                    ticks: {
+                                        fontColor: "white",
+                                        fontSize: 16
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Nombre de favoris',
+                                        fontColor: "white",
+                                    }
+                                }],
+                                yAxes: [{
+                                    ticks: {
+                                        fontColor: "white",
+                                        fontSize: 16,
+                                        stepSize: 1
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Tweet',
+                                        fontColor: "white",
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </section>
+        </section>
+        <section>
+            <section>Les comptes influenceurs</section>
+            <section>
+                <canvas id="accounts" width="400" height="400"></canvas>
+                <script>
+                    var accounts = document.getElementById("accounts").getContext("2d");
+                    accounts.canvas.width = 1000;
+                    accounts.canvas.height = 600;
+                    var data_accounts = {
+                        labels: ["@TwinPeaksArchve", "@SHO_TwinPeaks", "@ThatsOurWaldo", "@TwinPeaksDudes"],
+                        datasets: [
+                            {
+                                label: "Les tweets favoris",
+                                backgroundColor: 'rgba(215, 40, 40, 0.5)',
+                                borderColor: 'rgba(255, 255, 255, 1)',
+                                borderWidth: 1,
+                                data: [33, 21.6, 41.2, 30.9],
+                            }
+                        ]
+                    };
+                    var accountsBarChart = new Chart(accounts, {
+                        type: 'bar',
+                        data: data_accounts,
+                        options: {
+                            scaleFontColor: "#FFFFFF",
+                            scales: {
+                                yAxes: [{
+                                    ticks: {
+                                        fontColor: "white",
+                                        fontSize: 16
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Nombre de favoris',
+                                        fontColor: "white",
+                                    }
+                                }],
+                                xAxes: [{
+                                    ticks: {
+                                        fontColor: "white",
+                                        fontSize: 16,
+                                        stepSize: 1
+                                    },
+                                    scaleLabel: {
+                                        display: true,
+                                        labelString: 'Tweet',
+                                        fontColor: "white",
+                                    }
+                                }]
+                            }
+                        }
+                    });
+                </script>
+            </section>
+        </section>
+    </div>
+</div>
+
+<script src="public/lib/js/head.min.js"></script>
+<script src="public/js/reveal.js"></script>
+
+<script>
+    // More info https://github.com/hakimel/reveal.js#configuration
+    Reveal.initialize({
+        history: true,
+
+        // More info https://github.com/hakimel/reveal.js#dependencies
+        dependencies: [
+            { src: 'plugin/markdown/marked.js' },
+            { src: 'plugin/markdown/markdown.js' },
+            { src: 'plugin/notes/notes.js', async: true },
+            { src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+        ]
+    });
+</script>
+</body>
+</html>
