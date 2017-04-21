@@ -7,8 +7,7 @@ module.exports = (app) => {
 
     return {
         create,
-        show,
-        searchByCountry
+        show
     };
 
     function create(req, res, next) {
@@ -74,14 +73,15 @@ module.exports = (app) => {
       let data = [];
       // data.push(getGraph1);
       // data.push(getGraph2);
-      // data.push(getGraph3);
+      data.push(getByCountry);
       // data.push(getGraph4);
       // data.push(getGraph5);
       // data.push(getGraph6);
+      console.log(data);
       return data;
     }
 
-    function searchByCountry(req, res, next) {
+    function getByCountry() {
         Tweet.aggregate([
             {
                 $group :
@@ -94,7 +94,7 @@ module.exports = (app) => {
             if (err) {
                 next(err);
             } else {
-                return res.json(result);
+                return result;
             }
         });
     }

@@ -11,6 +11,10 @@ app.use("/lib", express.static(__dirname + '/lib'));
 app.use("/plugin", express.static(__dirname + '/plugin'));
 app.use("/chartjs", express.static(__dirname + '/chartjs'));
 
+app.engine('.html', require('ejs').__express);
+app.set('views', __dirname + '/public');
+app.set('view engine', 'html');
+
 require('./settings')(app);
 require('./models')(app);
 require('./actions')(app);
