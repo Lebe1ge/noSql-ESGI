@@ -7,7 +7,8 @@ module.exports = (app) => {
 
     return {
         create,
-        show
+        show,
+        searchByCountry
     };
 
     function create(req, res, next) {
@@ -66,5 +67,23 @@ module.exports = (app) => {
 
     function show(req, res, next){
       res.status(200).sendFile(path.join(__dirname+'/../../views/index.html'));
+    }
+
+    function searchByCountry(req, res, next) {
+        Tweet.aggregate([
+            {
+                $group :
+                {
+                    _id : "$user.lang",
+                    count: { $sum: 1 }
+                }
+            }
+        ], function (err, result) {
+            if (err) {
+                next(err);
+            } else {
+                return res.json(result);
+            }
+        });
     }
 };

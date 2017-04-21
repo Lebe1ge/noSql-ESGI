@@ -11,5 +11,9 @@ module.exports = (app) => {
         app.actions.tweets.show
     );
 
+    router.get('/test/searchByCountry',
+        app.actions.tweets.searchByCountry
+    );
+
     return router;
 };
