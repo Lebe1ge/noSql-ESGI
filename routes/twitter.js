@@ -7,8 +7,12 @@ module.exports = (app) => {
         app.actions.tweets.create
     );
 
-    router.get('/',
-        app.actions.tweets.show
+    router.get('/data/getByCountry',
+        app.actions.tweets.getByCountry
+    );
+
+    router.get('/data/getFavoriteTweet',
+        app.actions.tweets.getFavoriteTweet
     );
 
     return router;

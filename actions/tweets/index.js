@@ -7,7 +7,8 @@ module.exports = (app) => {
 
     return {
         create,
-        show
+        getByCountry,
+        getFavoriteTweet
     };
 
     function create(req, res, next) {
@@ -16,6 +17,7 @@ module.exports = (app) => {
         let lastId = 0;
         let i = 0;
         let requete = 0;
+        let dataGraph = [];
         return getTweets();
 
         function getTweets(){
@@ -64,24 +66,7 @@ module.exports = (app) => {
         }
     }
 
-    function show(req, res, next){
-      data = getGraph();
-      res.render('index', {graph: data});
-    }
-
-    function getGraph(){
-      let data = [];
-      // data.push(getGraph1);
-      // data.push(getGraph2);
-      data.push(getByCountry);
-      // data.push(getGraph4);
-      // data.push(getGraph5);
-      // data.push(getGraph6);
-      console.log(data);
-      return data;
-    }
-
-    function getByCountry() {
+    function getByCountry(req, res, next) {
         Tweet.aggregate([
             {
                 $group :
@@ -94,8 +79,16 @@ module.exports = (app) => {
             if (err) {
                 next(err);
             } else {
-                return result;
+                return res.json(result);
             }
+        });
+    }
+
+    function getFavoriteTweet(req, res, next) {
+        Tweet.find()
+             .limit(20).sort({"user.favourites_count": -1})
+        .then((data) => {
+            return res.json(result);
         });
     }
 };
